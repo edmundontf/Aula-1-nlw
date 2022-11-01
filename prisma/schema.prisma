@@ -1,0 +1,18 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model pool {
+  id String @id @default(cuid())//Gerar o valor do id automaticamente //cuid eh um id parecido com uuid porem menor.
+  titulo String
+  codigo String @unique // determina o codigo unico. 
+  createdAt DateTime @default(now()) // anota a data do campo atual dentro do campo createAT.
+}
